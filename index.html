@@ -1,15 +1,42 @@
-<footer class="input-area">
-    <div id="chat-container">
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChatGPT UI Clone</title>
+    <link rel="stylesheet" href="style.css">
+    </head>
+<body>
+    <header class="header">
+        <div class="header-left">
+            <span class="icon">&#9998;</span> <div class="logo">
+                <span class="logo-text">ChatGPT</span>
+                <span class="dropdown-icon">&#9662;</span>
+            </div>
         </div>
-    <div class="input-container">
-        <input type="text" id="chat-input" placeholder="Pergunte alguma coisa" />
-        <button id="send-button" class="send-button">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M2.25 18.75V21h1.5l14.125-14.125-1.5-1.5L2.25 18.75zM18.125 4.875L15.375 2.125l2.25-2.25c.75-.75 2.25-.75 3 0s.75 2.25 0 3L18.125 4.875z"/>
-            </svg>
-        </button>
-    </div>
-    <div class="legal-text">
-        <p>Ao enviar mensagens para o ChatGPT, você aceita nossos <a href="#">Termos</a> e declara ter lido nossa <a href="#">Política de Privacidade</a>.</p>
-    </div>
-</footer>
+        <button class="login-button">Entrar</button>
+    </header>
+
+    <main class="main-content">
+        <h1>ChatGPT</h1>
+    </main>
+
+    <footer class="input-area">
+        <div id="chat-container">
+            </div>
+        <div class="input-container">
+            <input type="text" id="chat-input" placeholder="Pergunte alguma coisa" />
+            <button id="send-button" class="send-button">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M2.25 18.75V21h1.5l14.125-14.125-1.5-1.5L2.25 18.75zM18.125 4.875L15.375 2.125l2.25-2.25c.75-.75 2.25-.75 3 0s.75 2.25 0 3L18.125 4.875z"/>
+                </svg>
+            </button>
+        </div>
+        <div class="legal-text">
+            <p>Ao enviar mensagens para o ChatGPT, você aceita nossos <a href="#">Termos</a> e declara ter lido nossa <a href="#">Política de Privacidade</a>.</p>
+        </div>
+    </footer>
+    
+    <script src="script.js"></script>
+</body>
+</html>

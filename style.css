@@ -69,6 +69,116 @@ h1 {
     background-color: #202123;
 }
 
+.legal-text {
+    font-size: 0.7em;
+    color: #999;
+    text-align: center;
+}
+
+.legal-text a {
+    color: #999;
+    text-decoration: underline;
+}
+
+/* Novos estilos para o chat */
+#chat-container {
+    padding-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.chat-message {
+    background-color: #3d3d3d;
+    padding: 10px 15px;
+    border-radius: 18px;
+    color: #f0f0f0;
+    max-width: 80%;
+    align-self: flex-end; /* Para mensagens do usuário */
+}
+
+/* Opcional: Estilo para a mensagem da IA, se for adicionar */
+.ai-message {
+    background-color: #2b2b2b;
+    align-self: flex-start;
+}
+
+#chat-input {
+    flex-grow: 1;
+    background-color: #40414f;
+    border: none;
+    color: #f0f0f0;
+    padding: 10px 15px;
+    border-radius: 20px;
+    outline: none;
+    font-size: 1em;
+}
+
+.input-container {
+    display: flex;
+    align-items: center;
+    background-color: #40414f;
+    border-radius: 20px;
+    padding-right: 10px;
+    margin-top: 10px;
+}
+
+.send-button {
+    background-color: #1a9066;
+    border: none;
+    color: #fff;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.send-button svg {
+    width: 20px;
+    height: 20px;
+    fill: #fff;
+}
+
+.dropdown-icon {
+    font-size: 12px;
+    margin-left: 5px;
+}
+
+.login-button {
+    background-color: transparent;
+    border: 1px solid #555;
+    color: #f0f0f0;
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.main-content {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+h1 {
+    font-size: 2.5em;
+    font-weight: bold;
+}
+
+.input-area {
+    width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+    background-color: #202123;
+}
+
 .input-container {
     background-color: #40414f;
     border-radius: 12px;

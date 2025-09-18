@@ -1,39 +1,30 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const chatInput = document.getElementById('chat-input');
-    const sendButton = document.getElementById('send-button');
-    const chatContainer = document.getElementById('chat-container');
+    const backgroundContainer = document.querySelector('.background-container');
+    const colors = ['purple', 'blue', 'pink', 'dark-blue'];
 
-    const handleSendMessage = () => {
-        const messageText = chatInput.value.trim();
+    function createBubble() {
+        const bubble = document.createElement('div');
+        bubble.classList.add('bubble', colors[Math.floor(Math.random() * colors.length)]);
+        
+        const size = Math.random() * 200 + 100; // Tamanho entre 100px e 300px
+        bubble.style.width = `${size}px`;
+        bubble.style.height = `${size}px`;
+        
+        bubble.style.left = `${Math.random() * 100}%`;
+        bubble.style.top = `${Math.random() * 100}%`;
 
-        if (messageText !== '') {
-            // Cria um novo elemento para a mensagem do usuário
-            const userMessage = document.createElement('div');
-            userMessage.className = 'chat-message';
-            userMessage.textContent = messageText;
+        // Ajustar a duração da animação para variar o movimento
+        const animationDuration = Math.random() * 15 + 10; // Duração entre 10s e 25s
+        bubble.style.animationDuration = `${animationDuration}s`;
+        
+        backgroundContainer.appendChild(bubble);
+    }
 
-            // Adiciona a mensagem ao contêiner de chat
-            chatContainer.appendChild(userMessage);
-
-            // Limpa o campo de entrada
-            chatInput.value = '';
-
-            // Rola para a última mensagem
-            chatContainer.scrollTop = chatContainer.scrollHeight;
-
-            // Futuramente: aqui você enviaria a mensagem para a API de IA
-            // e criaria uma resposta.
-            console.log("Mensagem do usuário enviada:", messageText);
-        }
-    };
-
-    // Enviar mensagem ao clicar no botão
-    sendButton.addEventListener('click', handleSendMessage);
-
-    // Enviar mensagem ao pressionar "Enter"
-    chatInput.addEventListener('keydown', (event) => {
-        if (event.key === 'Enter') {
-            event.preventDefault(); // Evita quebra de linha
+    // Crie algumas bolhas para começar
+    for (let i = 0; i < 5; i++) {
+        createBubble();
+    }
+});
             handleSendMessage();
         }
     });

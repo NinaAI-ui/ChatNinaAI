@@ -11,25 +11,27 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Poppins:wght@300;400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="chat-container">
-        <header class="chat-header">
-            <h1 class="chat-title">Nina.ai</h1>
-            <p class="chat-subtitle">Seu universo de conversa, agora.</p>
-        </header>
-        <div id="chat-box" class="chat-box">
-            <div class="message nina-message">
-                <p>Olá! Eu sou Nina. Como posso te ajudar hoje?</p>
+    <div class="main-container">
+        <div class="chat-container">
+            <header class="chat-header">
+                <h1 class="chat-title">Nina.ai</h1>
+                <p class="chat-subtitle">Sua conversa com a inteligência do amanhã.</p>
+            </header>
+            <div id="chat-box" class="chat-box">
+                <div class="message nina-message">
+                    <p>Olá! Eu sou Nina. Pronto para criarmos algo incrível juntos?</p>
+                </div>
             </div>
+            <form id="chat-form" class="chat-form">
+                <input type="text" id="user-input" placeholder="Pergunte-me qualquer coisa..." required>
+                <button type="submit" class="send-button">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="send-icon">
+                        <line x1="22" y1="2" x2="11" y2="13"></line>
+                        <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                    </svg>
+                </button>
+            </form>
         </div>
-        <form id="chat-form" class="chat-form">
-            <input type="text" id="user-input" placeholder="Digite sua mensagem..." required>
-            <button type="submit" class="send-button">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="send-icon">
-                    <line x1="22" y1="2" x2="11" y2="13"></line>
-                    <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
-                </svg>
-            </button>
-        </form>
     </div>
     <script src="script.js"></script>
 </body>

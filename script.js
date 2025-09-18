@@ -9,24 +9,20 @@ document.addEventListener('DOMContentLoaded', () => {
         const userMessage = userInput.value.trim();
         if (userMessage === '') return;
 
-        // Exibir a mensagem do usuário na tela
         appendMessage(userMessage, 'user');
         userInput.value = '';
 
-        // Simular a resposta da IA e mostrar o "digitando..."
         showTypingIndicator();
 
-        // Substitua este bloco de código pela chamada real à API do Gemini
-        // Exemplo: const geminiResponse = await getGeminiResponse(userMessage);
+        // **AQUI VOCÊ VAI INSERIR SUA CHAMADA À API DO GEMINI**
+        // Substitua o setTimeout abaixo pelo código de sua API.
 
-        // Apenas para demonstração, removemos o indicador e adicionamos uma resposta de teste
         setTimeout(() => {
             removeTypingIndicator();
-            const ninaResponse = `Você disse: "${userMessage}". Estou pronta para conversar.`;
+            const ninaResponse = `Você disse: "${userMessage}". Estou aqui para criar algo incrível.`;
             appendMessage(ninaResponse, 'nina');
         }, 1500);
 
-        // Rolar para a última mensagem
         chatBox.scrollTop = chatBox.scrollHeight;
     });
 
@@ -34,6 +30,34 @@ document.addEventListener('DOMContentLoaded', () => {
         const messageDiv = document.createElement('div');
         messageDiv.classList.add('message');
         messageDiv.classList.add(sender === 'user' ? 'user-message' : 'nina-message');
+
+        const messageP = document.createElement('p');
+        messageP.textContent = text;
+
+        messageDiv.appendChild(messageP);
+        chatBox.appendChild(messageDiv);
+
+        chatBox.scrollTop = chatBox.scrollHeight;
+    }
+
+    function showTypingIndicator() {
+        const typingIndicator = document.createElement('div');
+        typingIndicator.id = 'typing-indicator';
+        typingIndicator.classList.add('nina-message');
+        typingIndicator.innerHTML = '<span class="dot"></span><span class="dot"></span><span class="dot"></span>';
+        chatBox.appendChild(typingIndicator);
+        chatBox.scrollTop = chatBox.scrollHeight;
+    }
+
+    function removeTypingIndicator() {
+        const typingIndicator = document.getElementById('typing-indicator');
+        if (typingIndicator) {
+            typingIndicator.remove();
+        }
+    }
+
+    // O CSS para a animação do "digitando..." foi movido para o arquivo style.css para melhor organização.
+});
 
         const messageP = document.createElement('p');
         messageP.textContent = text;

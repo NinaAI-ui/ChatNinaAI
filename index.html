@@ -1,39 +1,37 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Chat Input Box</title>
-<style>
-  body {
-    margin: 0;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #121212;
-    font-family: Arial, sans-serif;
-  }
-  .chat-container {
-    background: linear-gradient(135deg, #4b6cb7, #8a2be2);
-    background-size: 400% 400%;
-    animation: gradientBG 15s ease infinite;
-    padding: 12px 16px;
-    border-radius: 12px;
-    box-shadow: 0 0 15px rgba(138, 43, 226, 0.6);
-    display: flex;
-    align-items: center;
-    max-width: 400px;
-    width: 100%;
-  }
-  @keyframes gradientBG {
-    0% {background-position:0% 50%;}
-    50% {background-position:100% 50%;}
-    100% {background-position:0% 50%;}
-  }
-  .chat-input {
-    flex-grow: 1;
-    padding: 10px 14px;
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alchemical AI Chat</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="background-container">
+        </div>
+    <div class="chat-ui">
+        <header>
+            <h1>Alchemical AI Chat</h1>
+        </header>
+        <div class="chat-messages">
+            <div class="message user-message">
+                <p>Explain artificial intelligence in simple terms.</p>
+                <span class="timestamp">18:55</span>
+            </div>
+            <div class="message ai-message">
+                <span class="avatar"></span>
+                <p>Echo: Explain artificial intelligence in simple terms.</p>
+                <span class="timestamp">18:55</span>
+            </div>
+        </div>
+        <div class="chat-input">
+            <input type="text" placeholder="Type your message...">
+            <button><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M2.25 18L9 13.5M2.25 18L9 22.5M2.25 18L18 18M9 13.5L18 18L9 22.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg></button>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
     border: none;
     border-radius: 8px;
     font-size: 1rem;

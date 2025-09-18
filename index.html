@@ -12,9 +12,7 @@
             <h1>Nina AI Chat</h1>
         </header>
 
-        <div class="chat-messages" id="chatMessages">
-            <!-- Mensagens aparecem aqui -->
-        </div>
+        <div class="chat-messages" id="chatMessages"></div>
 
         <div class="chat-input">
             <input type="text" id="chatInput" placeholder="Conversar com Nina..." autocomplete="off">
@@ -23,62 +21,5 @@
     </div>
 
     <script src="script.js"></script>
-</body>
-</html>    font-size: 1rem;
-    color: #ddd;
-    background-color: rgba(30, 0, 60, 0.7);
-    transition: background-color 0.3s ease;
-  }
-  .chat-input::placeholder {
-    color: #999;
-  }
-  .chat-input:focus {
-    outline: none;
-    background-color: rgba(30, 0, 60, 0.9);
-    color: #eee;
-  }
-  .send-button {
-    margin-left: 12px;
-    background-color: #6a0dad;
-    border: none;
-    color: white;
-    padding: 10px 16px;
-    font-size: 1rem;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  .send-button:hover {
-    background-color: #8a2be2;
-  }
-</style>
-</head>
-<body>
-  <div class="chat-container">
-    <input type="text" id="chatInput" class="chat-input" placeholder="Conversar com Nina" autocomplete="off" />
-    <button id="sendBtn" class="send-button">Enviar</button>
-  </div>
-
-  <script>
-    const chatInput = document.getElementById('chatInput');
-    const sendBtn = document.getElementById('sendBtn');
-
-    sendBtn.addEventListener('click', () => {
-      const message = chatInput.value.trim();
-      if (message) {
-        console.log('Mensagem enviada:', message);
-        chatInput.value = '';
-        chatInput.focus();
-      }
-    });
-
-    chatInput.addEventListener('focus', () => {
-      // Placeholder disappears automatically on focus
-    });
-
-    chatInput.addEventListener('blur', () => {
-      // Placeholder reappears automatically if input is empty
-    });
-  </script>
 </body>
 </html>

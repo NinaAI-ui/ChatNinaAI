@@ -3,38 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Alchemical AI Chat</title>
+    <title>Nina AI Chat</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="background-container">
-        </div>
     <div class="chat-ui">
         <header>
-            <h1>Alchemical AI Chat</h1>
+            <h1>Nina AI Chat</h1>
         </header>
-        <div class="chat-messages">
-            <div class="message user-message">
-                <p>Explain artificial intelligence in simple terms.</p>
-                <span class="timestamp">18:55</span>
-            </div>
-            <div class="message ai-message">
-                <span class="avatar"></span>
-                <p>Echo: Explain artificial intelligence in simple terms.</p>
-                <span class="timestamp">18:55</span>
-            </div>
+
+        <div class="chat-messages" id="chatMessages">
+            <!-- Mensagens aparecem aqui -->
         </div>
+
         <div class="chat-input">
-            <input type="text" placeholder="Type your message...">
-            <button><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M2.25 18L9 13.5M2.25 18L9 22.5M2.25 18L18 18M9 13.5L18 18L9 22.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg></button>
+            <input type="text" id="chatInput" placeholder="Conversar com Nina..." autocomplete="off">
+            <button id="sendBtn" class="send-button">Enviar</button>
         </div>
     </div>
+
     <script src="script.js"></script>
 </body>
-</html>
-    border: none;
-    border-radius: 8px;
-    font-size: 1rem;
+</html>    font-size: 1rem;
     color: #ddd;
     background-color: rgba(30, 0, 60, 0.7);
     transition: background-color 0.3s ease;

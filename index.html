@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nina IA - Seu universo de conversa</title>
+    <title>Nina IA - Seu Chat Pessoal</title>
     <link rel="stylesheet" href="style.css">
     <link rel="icon" type="image/x-icon" href="https://via.placeholder.com/32">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -11,29 +11,29 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Poppins:wght@300;400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <header class="header">
-        <nav class="nav">
-            <a href="#" class="logo">Nina.ai</a>
-            <ul class="nav-links">
-                <li><a href="#about">Sobre</a></li>
-                <li><a href="#features">Funcionalidades</a></li>
-                <li><a href="#contact">Contato</a></li>
-            </ul>
-        </nav>
-    </header>
-
-    <main>
-        <section class="hero-section">
-            <div class="hero-content">
-                <h1>Conversas que Inspiram, a um toque de distância.</h1>
-                <p>Conheça Nina, a inteligência artificial que transforma suas ideias em realidade, suas conversas em arte, e seu dia a dia em algo extraordinário.</p>
-                <a href="#contact" class="cta-button">Começar a Conversar</a>
+    <div class="chat-container">
+        <header class="chat-header">
+            <h1 class="chat-title">Nina.ai</h1>
+            <p class="chat-subtitle">Seu universo de conversa, agora.</p>
+        </header>
+        <div id="chat-box" class="chat-box">
+            <div class="message nina-message">
+                <p>Olá! Eu sou Nina. Como posso te ajudar hoje?</p>
             </div>
-            <div class="hero-image-container">
-                <img src="https://via.placeholder.com/600x400" alt="Ilustração da Nina IA">
-            </div>
-        </section>
-
+        </div>
+        <form id="chat-form" class="chat-form">
+            <input type="text" id="user-input" placeholder="Digite sua mensagem..." required>
+            <button type="submit" class="send-button">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="send-icon">
+                    <line x1="22" y1="2" x2="11" y2="13"></line>
+                    <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                </svg>
+            </button>
+        </form>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
         <section id="about" class="about-section">
             <div class="about-content">
                 <h2>Quem é a Nina?</h2>

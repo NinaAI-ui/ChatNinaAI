@@ -1,29 +1,24 @@
-const chatInput = document.getElementById('chatInput');
-const sendBtn = document.getElementById('sendBtn');
-const chatMessages = document.getElementById('chatMessages');
+document.addEventListener('DOMContentLoaded', () => {
+    console.log('Site da Nina IA carregado com sucesso!');
 
-function addMessage(content, sender) {
-  const msg = document.createElement('div');
-  msg.classList.add('message');
-  msg.classList.add(sender === 'user' ? 'user-message' : 'ai-message');
-  msg.textContent = content;
-  chatMessages.appendChild(msg);
-  chatMessages.scrollTop = chatMessages.scrollHeight;
-}
+    // Exemplo de uma animação simples ao rolar a página
+    const sections = document.querySelectorAll('section');
 
-sendBtn.addEventListener('click', () => {
-  const message = chatInput.value.trim();
-  if (message) {
-    addMessage(message, 'user');
-    chatInput.value = '';
-    setTimeout(() => {
-      addMessage("Echo: " + message, 'ai');
-    }, 600);
-  }
-});
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
+            }
+        });
+    }, {
+        threshold: 0.1
+    });
 
-chatInput.addEventListener('keydown', (event) => {
-  if (event.key === 'Enter') {
-    sendBtn.click();
-  }
+    sections.forEach(section => {
+        section.style.opacity = '0';
+        section.style.transform = 'translateY(20px)';
+        section.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
+        observer.observe(section);
+    });
 });

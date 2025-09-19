@@ -4,10 +4,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const chatBox = document.getElementById('chat-box');
 
     // **IMPORTANTE: Mude esta URL para a URL do seu servidor Vercel**
-    const serverUrl = 'https://SUA_URL_DO_VERCEL.vercel.app/chat';
+    const serverUrl = 'https://connect-nina-tlgn.vercel.app/';
 
     chatForm.addEventListener('submit', async (e) => {
-        // Esta linha impede que a página recarregue.
+        // Esta linha impede que a página recarregue ao enviar o formulário.
         e.preventDefault();
 
         const userMessage = userInput.value.trim();

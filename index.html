@@ -3,36 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nina IA - Seu Chat Pessoal</title>
+    <title>Nina.ai</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="icon" type="image/x-icon" href="https://via.placeholder.com/32">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Poppins:wght@300;400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="main-container">
-        <div class="chat-container">
-            <header class="chat-header">
-                <h1 class="chat-title">Nina.ai</h1>
-                <p class="chat-subtitle">Sua conversa com a inteligência do amanhã.</p>
-            </header>
-            <div id="chat-box" class="chat-box">
-                <div class="message nina-message">
-                    <p>Olá! Eu sou Nina. Pronto para criarmos algo incrível juntos?</p>
-                </div>
+    <div class="chat-container">
+        <header>
+            <h1>Nina.ai</h1>
+            <p>Sua conversa com a inteligência do amanhã.</p>
+        </header>
+
+        <main id="chat-box">
+            <div class="message nina-message">
+                <p>Olá! Eu sou Nina. Pronto para criarmos algo incrível juntos?</p>
             </div>
-            <form id="chat-form" class="chat-form">
-                <input type="text" id="user-input" placeholder="Pergunte-me qualquer coisa..." required>
-                <button type="submit" class="send-button">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="send-icon">
-                        <line x1="22" y1="2" x2="11" y2="13"></line>
-                        <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
-                    </svg>
-                </button>
-            </form>
-        </div>
+        </main>
+
+        <form id="chat-form">
+            <input type="text" id="user-input" placeholder="Pergunte-me qualquer coisa..." autocomplete="off">
+            <button type="submit">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="send-icon"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+            </button>
+        </form>
     </div>
+
     <script src="script.js"></script>
+</body>
+</html>
 </body>
 </html>

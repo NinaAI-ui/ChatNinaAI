@@ -71,3 +71,40 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 });
+            appendMessage(data.text, 'nina');
+        } catch (error) {
+            console.error('Erro:', error);
+            removeTypingIndicator();
+            appendMessage('Desculpe, houve um erro ao conectar com a IA.', 'nina');
+        } finally {
+            chatBox.scrollTop = chatBox.scrollHeight;
+        }
+    });
+
+    function appendMessage(text, sender) {
+        const messageDiv = document.createElement('div');
+        messageDiv.classList.add('message');
+        messageDiv.classList.add(sender === 'user' ? 'user-message' : 'nina-message');
+        const messageP = document.createElement('p');
+        messageP.textContent = text;
+        messageDiv.appendChild(messageP);
+        chatBox.appendChild(messageDiv);
+        chatBox.scrollTop = chatBox.scrollHeight;
+    }
+
+    function showTypingIndicator() {
+        const typingIndicator = document.createElement('div');
+        typingIndicator.id = 'typing-indicator';
+        typingIndicator.classList.add('nina-message');
+        typingIndicator.innerHTML = '<span class="dot"></span><span class="dot"></span><span class="dot"></span>';
+        chatBox.appendChild(typingIndicator);
+        chatBox.scrollTop = chatBox.scrollHeight;
+    }
+
+    function removeTypingIndicator() {
+        const typingIndicator = document.getElementById('typing-indicator');
+        if (typingIndicator) {
+            typingIndicator.remove();
+        }
+    }
+});

@@ -4,7 +4,7 @@ const chatBox = document.getElementById('chat-box');
 
 // IMPORTANTE: Cole a URL que o Vercel te deu aqui!
 // Lembre-se de adicionar /chat no final.
-const serverUrl = 'https://SUA_URL_DO_VERCEL.vercel.app/chat';
+const serverUrl = 'https://connect-nina-tlgn.vercel.app/';
 
 document.addEventListener('DOMContentLoaded', () => {
 

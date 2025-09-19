@@ -1,7 +1,12 @@
+const chatForm = document.getElementById('chat-form');
+const userInput = document.getElementById('user-input');
+const chatBox = document.getElementById('chat-box');
+
+// IMPORTANTE: Cole a URL que o Vercel te deu aqui!
+// Lembre-se de adicionar /chat no final.
+const serverUrl = 'https://SUA_URL_DO_VERCEL.vercel.app/chat';
+
 document.addEventListener('DOMContentLoaded', () => {
-    const chatForm = document.getElementById('chat-form');
-    const userInput = document.getElementById('user-input');
-    const chatBox = document.getElementById('chat-box');
 
     chatForm.addEventListener('submit', async (e) => {
         e.preventDefault();
@@ -14,14 +19,29 @@ document.addEventListener('DOMContentLoaded', () => {
 
         showTypingIndicator();
 
-        // **AQUI VOCÊ VAI INSERIR SUA CHAMADA À API DO GEMINI**
-        // Substitua o setTimeout abaixo pelo código de sua API.
+        try {
+            const response = await fetch(serverUrl, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ prompt: userMessage }),
+            });
 
-        setTimeout(() => {
+            if (!response.ok) {
+                throw new Error(`Erro do servidor: ${response.status}`);
+            }
+
+            const data = await response.json();
+            
             removeTypingIndicator();
-            const ninaResponse = `Você disse: "${userMessage}". Estou aqui para criar algo incrível.`;
-            appendMessage(ninaResponse, 'nina');
-        }, 1500);
+            appendMessage(data.text, 'nina');
+
+        } catch (error) {
+            console.error('Erro:', error);
+            removeTypingIndicator();
+            appendMessage('Desculpe, houve um erro ao conectar com a IA.', 'nina');
+        }
 
         chatBox.scrollTop = chatBox.scrollHeight;
     });
@@ -55,29 +75,7 @@ document.addEventListener('DOMContentLoaded', () => {
             typingIndicator.remove();
         }
     }
-
-    // O CSS para a animação do "digitando..." foi movido para o arquivo style.css para melhor organização.
 });
-
-        const messageP = document.createElement('p');
-        messageP.textContent = text;
-
-        messageDiv.appendChild(messageP);
-        chatBox.appendChild(messageDiv);
-
-        chatBox.scrollTop = chatBox.scrollHeight;
-    }
-
-    function showTypingIndicator() {
-        const typingIndicator = document.createElement('div');
-        typingIndicator.id = 'typing-indicator';
-        typingIndicator.classList.add('nina-message');
-        typingIndicator.innerHTML = '<span class="dot"></span><span class="dot"></span><span class="dot"></span>';
-        chatBox.appendChild(typingIndicator);
-        chatBox.scrollTop = chatBox.scrollHeight;
-    }
-
-    function removeTypingIndicator() {
         const typingIndicator = document.getElementById('typing-indicator');
         if (typingIndicator) {
             typingIndicator.remove();

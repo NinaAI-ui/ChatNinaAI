@@ -6,34 +6,81 @@ document.addEventListener('DOMContentLoaded', () => {
     // **CORREÇÃO: Esta URL agora inclui a rota /chat.**
     const serverUrl = 'https://connect-nina-tlgn.vercel.app/chat';
 
-    chatForm.addEventListener('submit', async (e) => {
-        // Esta linha impede que a página recarregue ao enviar o formulário.
-        e.preventDefault();
+    // Adiciona uma verificação para garantir que o formulário foi encontrado
+    if (chatForm) {
+        chatForm.addEventListener('submit', async (e) => {
+            // Esta linha impede que a página recarregue ao enviar o formulário.
+            e.preventDefault();
 
-        const userMessage = userInput.value.trim();
-        if (userMessage === '') return;
+            const userMessage = userInput.value.trim();
+            if (userMessage === '') return;
 
-        appendMessage(userMessage, 'user');
-        userInput.value = '';
+            appendMessage(userMessage, 'user');
+            userInput.value = '';
 
-        showTypingIndicator();
+            showTypingIndicator();
 
-        try {
-            const response = await fetch(serverUrl, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ prompt: userMessage })
-            });
+            try {
+                const response = await fetch(serverUrl, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ prompt: userMessage })
+                });
 
-            if (!response.ok) {
-                // Se o servidor retornar um erro, mostra a mensagem de status.
-                const errorText = `Erro do servidor: ${response.status} - ${response.statusText}`;
-                throw new Error(errorText);
+                if (!response.ok) {
+                    const errorText = `Erro do servidor: ${response.status} - ${response.statusText}`;
+                    throw new Error(errorText);
+                }
+
+                const data = await response.json();
+                
+                removeTypingIndicator();
+                appendMessage(data.text, 'nina');
+            } catch (error) {
+                console.error('Erro:', error);
+                removeTypingIndicator();
+                
+                const errorMessage = `Desculpe, houve um erro ao conectar: ${error.message}`;
+                appendMessage(errorMessage, 'nina');
+            } finally {
+                chatBox.scrollTop = chatBox.scrollHeight;
             }
+        });
+    } else {
+        // Se o formulário não for encontrado, mostra um erro no console.
+        console.error('Erro: O elemento com o id "chat-form" não foi encontrado.');
+    }
 
-            const data = await response.json();
+
+    function appendMessage(text, sender) {
+        const messageDiv = document.createElement('div');
+        messageDiv.classList.add('message');
+        messageDiv.classList.add(sender === 'user' ? 'user-message' : 'nina-message');
+        const messageP = document.createElement('p');
+        messageP.textContent = text;
+        messageDiv.appendChild(messageP);
+        chatBox.appendChild(messageDiv);
+        chatBox.scrollTop = chatBox.scrollHeight;
+    }
+
+    function showTypingIndicator() {
+        const typingIndicator = document.createElement('div');
+        typingIndicator.id = 'typing-indicator';
+        typingIndicator.classList.add('nina-message');
+        typingIndicator.innerHTML = '<span class="dot"></span><span class="dot"></span><span class="dot"></span>';
+        chatBox.appendChild(typingIndicator);
+        chatBox.scrollTop = chatBox.scrollHeight;
+    }
+
+    function removeTypingIndicator() {
+        const typingIndicator = document.getElementById('typing-indicator');
+        if (typingIndicator) {
+            typingIndicator.remove();
+        }
+    }
+});
             
             removeTypingIndicator();
             appendMessage(data.text, 'nina');

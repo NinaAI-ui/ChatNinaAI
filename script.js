@@ -4,7 +4,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const chatBox = document.getElementById('chat-box');
 
     // **CORREÇÃO: Esta URL agora inclui a rota /chat.**
-    // Substitua 'connect-nina-tlgn.vercel.app' pela URL real do seu projeto.
     const serverUrl = 'https://connect-nina-tlgn.vercel.app/chat';
 
     chatForm.addEventListener('submit', async (e) => {
@@ -29,11 +28,54 @@ document.addEventListener('DOMContentLoaded', () => {
             });
 
             if (!response.ok) {
-                throw new Error(`Erro do servidor: ${response.status}`);
+                // Se o servidor retornar um erro, mostra a mensagem de status.
+                const errorText = `Erro do servidor: ${response.status} - ${response.statusText}`;
+                throw new Error(errorText);
             }
 
             const data = await response.json();
             
+            removeTypingIndicator();
+            appendMessage(data.text, 'nina');
+        } catch (error) {
+            console.error('Erro:', error);
+            removeTypingIndicator();
+            
+            // **Aqui está a correção para mostrar o erro no chat:**
+            const errorMessage = `Desculpe, houve um erro ao conectar: ${error.message}`;
+            appendMessage(errorMessage, 'nina');
+        } finally {
+            chatBox.scrollTop = chatBox.scrollHeight;
+        }
+    });
+
+    function appendMessage(text, sender) {
+        const messageDiv = document.createElement('div');
+        messageDiv.classList.add('message');
+        messageDiv.classList.add(sender === 'user' ? 'user-message' : 'nina-message');
+        const messageP = document.createElement('p');
+        messageP.textContent = text;
+        messageDiv.appendChild(messageP);
+        chatBox.appendChild(messageDiv);
+        chatBox.scrollTop = chatBox.scrollHeight;
+    }
+
+    function showTypingIndicator() {
+        const typingIndicator = document.createElement('div');
+        typingIndicator.id = 'typing-indicator';
+        typingIndicator.classList.add('nina-message');
+        typingIndicator.innerHTML = '<span class="dot"></span><span class="dot"></span><span class="dot"></span>';
+        chatBox.appendChild(typingIndicator);
+        chatBox.scrollTop = chatBox.scrollHeight;
+    }
+
+    function removeTypingIndicator() {
+        const typingIndicator = document.getElementById('typing-indicator');
+        if (typingIndicator) {
+            typingIndicator.remove();
+        }
+    }
+});
             removeTypingIndicator();
             appendMessage(data.text, 'nina');
         } catch (error) {
